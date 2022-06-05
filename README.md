@@ -27,29 +27,23 @@ This will allow a user to add food products and reviews. It will also allow the 
 
 Go  to your web browser of your choice.
 
-Then clone this reposiroty to your device. $git clone
+Then clone this reposiroty to your device. 'git clone'
 
-Then you will open up the folder with VSCode.
+'cd marios_food_code_review'
 
-Navigate to your root directory and bundle install the project
+'bundle install' the project
 
-If you are on windows you will need to create a file in the root directory of the project called 'db_access.rb' and within that file you will need to add the following: "DB = PG.connect({:dbname => 'volunteer_tracker', :password => '[YOUR PASSWORD GOES HERE]'})".
+Now you can run 'rake db:create'
 
-If on mac you will need to navigate to 'spec_helper.rb' and add 'DB = PG.connect({:dbname => 'volunteer_tracker})' below the require statements.
+Then run 'rake db:test:prepare'
 
-Create your database, type in 'createdb[DATABASE NAME]'
+Then run 'rake db:migrate'
 
-psql [DATABASE NAME] < database_backup.sql * If on windows run the aforementioned command adding .exe after psql ex. 'psql.exe [DATABASE NAME] < database_backup.sql'
+Then run 'rake db:seed'
 
-createdb -T [DATABASE NAME] [TEST DATABASE NAME]
+Then run 'pg_ctl start' to start up a psql server
 
-In the terminal run command 'rspec' to see that the test are passing
-
-In the termal run command 'ruby app.rb' to start up server
-
-In your browser navigate to 'localhost:4567'
-
-From here you can have some fun
+To start up a rails server run 'rails s', then navigate to localhost:5432 in your browser.
 ## Known Bugs
 
 There is no known bugs at the moment
