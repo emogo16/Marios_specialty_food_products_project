@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: Marios_specialty_food_products_project_development
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,7 +60,8 @@ development:
 test:
   <<: *default
   database: Marios_specialty_food_products_project_test
-
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -80,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: Marios_specialty_food_products_project_production
-  username: Marios_specialty_food_products_project
-  password: <%= ENV['MARIOS_SPECIALTY_FOOD_PRODUCTS_PROJECT_DATABASE_PASSWORD'] %>
+  database: Marios_specialty_food_products_project
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['Marios_specialty_food_products_project_PASSWORD'] %>
