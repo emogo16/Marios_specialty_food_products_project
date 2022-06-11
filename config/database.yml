@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: Marios_specialty_food_products_project_development
+  database: Marios_specialty_food_products_project
   username: <%= ENV['POSTGRES_USERNAME'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: Marios_specialty_food_products_project_test
+  database: Marios_specialty_food_products_project
   username: <%= ENV['POSTGRES_USERNAME'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -85,4 +85,4 @@ production:
   <<: *default
   database: Marios_specialty_food_products_project
   username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['Marios_specialty_food_products_project_PASSWORD'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
