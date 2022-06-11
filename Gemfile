@@ -42,13 +42,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-  gem 'faker'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
-group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'

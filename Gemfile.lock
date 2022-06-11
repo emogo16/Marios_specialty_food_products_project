@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,8 +81,6 @@ GEM
     duktape (2.6.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
-    faker (2.21.0)
-      i18n (>= 1.8.11, < 2)
     ffi (1.15.5-x64-mingw32)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -220,7 +226,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   duktape
-  faker
+  faker!
   jbuilder (~> 2.5)
   jquery-rails
   launchy
