@@ -5,6 +5,11 @@ def index
   render :index
 end
 
+def home
+  @products = Product.all
+  render :home 
+end
+
 def new
   @product = Product.new
   render :new
@@ -47,9 +52,13 @@ end
     redirect_to products_path
   end
 
+  def landing
+    @products = Product
+    render :landing
+  end
+
   private
   def product_params
     params.require(:product).permit(:name, :cost, :country_of_origin)
   end
 end
-

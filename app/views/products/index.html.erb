@@ -1,16 +1,31 @@
-<div class="about">
-  <h3>|Backstory about Mario's Foods|</h3>
-    <p>Mario's is a family buisness that has been passed down for centuries. We care for the well being of our customers and we would love to make it right the first time. Therefore, we have made it easy for you to share your expirience. We would love to hear your feedback.</p><br><br><hr>
+# <div class="about">
+#   <h3>|Backstory about Mario's Foods|</h3>
+#     <p>Mario's is a family buisness that has been passed down for centuries. We care for the well being of our customers and we would love to make it right the first time. Therefore, we have made it easy for you to share your expirience. We would love to hear your feedback.</p><br><br><hr>
 
-  <div class="wrapper">
-    <button class="btn btn-default"><%= link_to "Home", root_path %></button>
-    <button class="btn btn-default"><%= link_to "New Product", new_product_path %></button>
-  </div>
+#   <div class="wrapper">
+#     <button class="btn btn-default"><%= link_to "Home", root_path %></button>
+#     <button class="btn btn-default"><%= link_to "New Product", new_product_path %></button>
+#   </div>
 
-  <h1>Products</h1>
+#   <h1>Products</h1>
+#   <ul>
+#     <% @products.each do |product| %>
+#       <li><%= link_to product.name, product_path(product) %></li>
+#     <% end %>
+#   </ul>
+# </div>
+
+<h1>Products</h1>
+<p><%= link_to "Return to Home", root_path %></p>
+<p><%= link_to "Add new product", new_product_path %></p>
+
+<h4>All Products</h4>
+<% if @products.any? %>
   <ul>
     <% @products.each do |product| %>
       <li><%= link_to product.name, product_path(product) %></li>
     <% end %>
   </ul>
-</div>
+<% else %>
+  <p>There are no products yet please add some. </p>
+<% end %>
