@@ -1,9 +1,13 @@
 class ReviewsController < ApplicationController
 
+  def show
+    @review = Review.find(params[:id])
+    @product = @review.product
+  end
+
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
-    render :new
   end
 
   def create
@@ -17,25 +21,26 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show 
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
-    render :show
-  end
+  # def show 
+  #   @product = Product.find(params[:product_id])
+  #   @review = Review.find(params[:id])
+  #   render :show
+  # end
 
   def edit 
     @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
+    @review = @product.reviews.find(params[:id])
     render :edit
   end
 
   def update 
-    @review = Review.find(params[:id])
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.find(params[:id])
     if @review.update(review_params)
-      flash[:notice] = "Review has been successfully updated"
-      redirect_to  product_path(@review.product)
+      flash[:notice] = "Review successfully updated!"
+      redirect_to product_review_path(@product, @review)
     else
-      @product = Product.find(params[:product_id])
+      flash[:notice] = "Your product was not added."
       render :edit
     end
   end

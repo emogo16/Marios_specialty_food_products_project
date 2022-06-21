@@ -12,7 +12,7 @@ Review.destroy_all
   product = Product.create(
     name: Faker::Space.planet,
     cost: Faker::Number.decimal(l_digits: 2),
-    country_of_orgin: Faker::Address.country
+    origin: Faker::Address.country
   )
   5.times do 
     Review.create!(
