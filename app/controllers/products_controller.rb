@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :only => [:new, :edit, :create, :update, :destroy] do
+  end
 
 def index
   @products = Product.all
@@ -10,9 +12,13 @@ def home
   render :home 
 end
 
-def new
+def show
+    @product = Product.find(params[:id])
+    @reviews = @product.reviews
+  end
+
+  def new
   @product = Product.new
-  render :new
 end
 
 def create
@@ -21,19 +27,16 @@ def create
     flash[:notice] = "Product successfully added!"
     redirect_to products_path
   else
+    flash[:notice] = "Your product has not been added."
     render :new
   end
 end
 
   def edit
     @product = Product.find(params[:id])
-    render :edit
   end
 
-  def show
-    @product = Product.find(params[:id])
-    render :show
-  end
+  
 
   def update
     @product = Product.find(params[:id])
@@ -41,6 +44,7 @@ end
       flash[:notice] = "Product successfully updated!"
       redirect_to products_path
     else
+      flash[:notice] = "Your product has not been updated."
       render :edit
     end
   end
@@ -52,10 +56,10 @@ end
     redirect_to products_path
   end
 
-  def landing
-    @products = Product
-    render :landing
-  end
+  # def landing
+  #   @products = Product
+  #   render :landing
+  # end
 
   private
   def product_params

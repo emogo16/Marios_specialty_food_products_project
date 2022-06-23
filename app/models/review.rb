@@ -2,9 +2,9 @@ class Review < ApplicationRecord
   belongs_to :product
 
   validates :author, :presence => true
-  validates_length_of :author, maximum: 100
-  validates_length_of :content_body, minimum:50, maximum:250
-
+  validates :content_body, {:presence => true, :length => { :minimum => 50, :maximum => 250 }}
+  validates :rating, :presence => true
+  
   before_save(:titlelize_review)
 
   private 

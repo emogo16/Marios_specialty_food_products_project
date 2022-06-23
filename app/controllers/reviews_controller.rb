@@ -1,13 +1,17 @@
 class ReviewsController < ApplicationController
-
-  def show
-    @review = Review.find(params[:id])
-    @product = @review.product
+  before_action :only => [:edit, :update, :destroy] do
   end
 
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
+    render:new
+  end
+  
+  def show
+    @review = Review.find(params[:id])
+    @product = @review.product
+    render :show
   end
 
   def create
@@ -15,17 +19,12 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.new(review_params)
     if @review.save
       flash[:notice] = "Review has been successfully added"
-      redirect_to product_path(@product)
+      redirect_to product_path(@review.product)
     else
+      flash[:notice] = "Your product has not been added."
       render :new
     end
   end
-
-  # def show 
-  #   @product = Product.find(params[:product_id])
-  #   @review = Review.find(params[:id])
-  #   render :show
-  # end
 
   def edit 
     @product = Product.find(params[:product_id])

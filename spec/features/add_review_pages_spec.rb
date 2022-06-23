@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-describe "add a review process" do
+describe "add a review" do
   before:each do
     visit new_product_path
   end
   
   it "adds a review" do
-    product = Product.create(:name => 'Mars', :cost => '1.50', :origin => 'United States of America')
+    product = Product.create(:name => 'Snickers', :cost => '1.50', :origin => 'United States of America')
+    # visit new_product_path
     visit product_path(product)
-    click_link 'Edit'
-    save_and_open_page
-    fill_in 'Name', :with => "Bob"
-    # save_and_open_page
-    fill_in 'Content body', :with => "Blah Blah Blah lalallalalalalalalalalalalla."
+    # click_link 'Snickers'
+    click_link 'Add a review for this product'
+    fill_in 'Author', :with => "Bob"
+    fill_in 'review_content_body', :with => "Blah Blah Blah lalallalalalalalalalalalallalalallalalalalalalalalalalla."
     fill_in 'Rating', :with => 3
     click_on 'Create Review'
-    expect(page).to have_content 'Mars'
+    expect(page).to have_content 'Bob'
   end
 
   it "returns an error if form left blank" do
